@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 {
     if (argc < 2)
     {
-        printf("Usage: ./%s login <command> [argument]\n", argv[0]);
+        printf("Usage: %s <command> [argument]\n", argv[0]);
         return 1;
     }
 
@@ -73,8 +73,19 @@ int main(int argc, char* argv[])
         int64_t current_in;
         int64_t current_out;
         if (query(&month_usage, &current_in, &current_out) == -1)
-            errx(1, "query failed");
-        printf("%lld %lld %lld\n", (long long)month_usage, (long long)current_in, (long long)current_out);
+        {
+            printf("Query failed. Please try again later.\n");
+        }
+        else
+        {
+            char buf[31];
+            bytes_to_human_string(month_usage, buf);
+            printf("Month usage: %s\n", buf);
+            bytes_to_human_string(current_in, buf);
+            printf("Current in: %s\n", buf);
+            bytes_to_human_string(current_out, buf);
+            printf("Current out: %s\n", buf);
+        }
     }
 
     return 0;
