@@ -23,12 +23,11 @@ SOFTWARE.
 */
 
 #ifndef TUNET_H
-
 #define TUNET_H
 
 #include <stdint.h>
 
 int login(const char* user_name, const char* password);
-int query(int64_t* month_usage, int64_t* current_in, int64_t* current_out);
+int query_usage(int64_t* month_usage, int64_t* current_in, int64_t* current_out);
 
 #endif

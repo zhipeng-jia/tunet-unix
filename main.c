@@ -26,7 +26,6 @@ SOFTWARE.
 #include <stdint.h>
 #include <string.h>
 #include <unistd.h>
-#include <err.h>
 #include "tunet.h"
 
 void bytes_to_human_string(int64_t bytes, char* dest)
@@ -67,14 +66,14 @@ int main(int argc, char* argv[])
         else
             printf("Login successful!\n");
     }
-    else if (strcmp(argv[1], "query") == 0)
+    else if (strcmp(argv[1], "usage") == 0)
     {
         int64_t month_usage;
         int64_t current_in;
         int64_t current_out;
-        if (query(&month_usage, &current_in, &current_out) == -1)
+        if (query_usage(&month_usage, &current_in, &current_out) == -1)
         {
-            printf("Query failed. Please try again later.\n");
+            printf("Usage query failed. Please try again later.\n");
         }
         else
         {

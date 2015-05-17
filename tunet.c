@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include "tunet.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -31,7 +32,6 @@ SOFTWARE.
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <err.h>
 #include <openssl/md5.h>
 
 struct challenge_request
@@ -372,7 +372,7 @@ struct query_response
     int64_t free_out;
 };
 
-int query(int64_t* month_usage, int64_t* current_in, int64_t* current_out)
+int query_usage(int64_t* month_usage, int64_t* current_in, int64_t* current_out)
 {
     int64_t login_id;
     if (check_online(&login_id, month_usage) == -1)
